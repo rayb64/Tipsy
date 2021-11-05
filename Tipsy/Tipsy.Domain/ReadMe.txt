@@ -1,0 +1,1 @@
+﻿This is the domain layer.  For the Tipsy application this will be both the business logic and data tiers.
