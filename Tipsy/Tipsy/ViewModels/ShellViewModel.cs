@@ -1,4 +1,10 @@
-﻿namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
+﻿// <Copyright>Copyright (c) Birklid Software. All rights reserved.</Copyright>
+// <File>ShellViewModel.cs</File>
+// <Company>Birklid Software</Company>
+// <Author>Ray Birklid</Author>
+// <Email>Ray.Birklid@gmail.com</Email>
+// <Date>11/5/2021 3:34:06 PM</Date>
+namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
 {
     using Prism.Commands;
     using Prism.Mvvm;
