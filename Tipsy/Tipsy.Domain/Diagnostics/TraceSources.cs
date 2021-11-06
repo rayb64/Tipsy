@@ -7,7 +7,7 @@
 // <Company>Birklid Software</Company>
 // <Author>Ray Birklid</Author>
 // <Email>Ray.Birklid@gmail.com</Email>
-// <Date>11/5/2021 6:39:57 PM</Date>
+// <Date>11/6/2021 7:20:31 AM</Date>
 namespace Com.Gmail.Birklid.Ray.Diagnostics
 {
     using System.Diagnostics;
