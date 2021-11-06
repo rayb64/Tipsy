@@ -1,0 +1,84 @@
+﻿<# // ------------------------------------------------------------------ #>
+<# // This T4 template generates all of the common TraceSource classes  #>
+<# // ------------------------------------------------------------------ #>
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Linq.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.XDocument.dll" #>
+<#@ assembly name="System.Xml.Linq.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="netstandard.dll" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Xml.XPath" #>
+// ****************************************************************************
+// NOTE: This file was automatically generated from a text template.
+//       Modify at your own risk.
+// ****************************************************************************
+// <Copyright>Copyright (c) Birklid Software. All rights reserved.</Copyright>
+// <File>TraceSources.cs</File>
+// <Company>Birklid Software</Company>
+// <Author>Ray Birklid</Author>
+// <Email>Ray.Birklid@gmail.com</Email>
+// <Date><#=string.Format("{0:d} {0:T}", System.DateTime.Now)#></Date>
+namespace Com.Gmail.Birklid.Ray.Diagnostics
+{
+    using System.Diagnostics;
+
+    public class TraceSourceBase : TraceSource
+    {
+        protected TraceSourceBase(
+            string name)
+            : base(name)
+        {
+        }
+    }
+<#
+var elements = GetTraceSourceElements();
+foreach (var element in elements)
+{
+var name = element.Attribute("Name").Value;
+#>
+
+    /// <summary>
+    /// A singleton implementation of a TraceSource <#=element.Value.ToLower()#>
+    /// </summary>
+    public class <#=name#>TraceSource : TraceSourceBase
+    {
+        #region Private Fields
+
+        private static readonly <#=name#>TraceSource instance = new <#=name#>TraceSource();
+
+        #endregion Private Fields
+
+        #region Creation
+
+        private <#=name#>TraceSource()
+            : base("<#=name#>")
+        {
+        }
+
+        #endregion Creation
+
+        /// <summary>
+        /// Gets the instance of this TraceSource.
+        /// </summary>
+        public static TraceSourceBase Instance { get { return <#=name#>TraceSource.instance; } }
+    }
+<#
+}
+#>
+}
+<#+
+IEnumerable<XElement> GetTraceSourceElements()
+{
+    string fileName = this.Host.ResolvePath("../Resources/Xml/Trace-Sources.xml");
+    var doc = XDocument.Load(fileName);
+    var elements = doc.Root.Elements();
+    return elements;
+}
+#>

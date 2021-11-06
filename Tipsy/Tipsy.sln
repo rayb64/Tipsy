@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tipsy.Domain", "Tipsy.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tipsy.Controls", "Tipsy.Controls\Tipsy.Controls.csproj", "{57F909F6-B9A4-4D81-8B13-D579BA0A438B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{7D7376E9-C365-4A2D-A3B1-534872462BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tipsy.Test", "Testing\Tipsy.Test\Tipsy.Test.csproj", "{0B1B7249-F6B9-40DE-A883-B4B5A251A171}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{57F909F6-B9A4-4D81-8B13-D579BA0A438B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57F909F6-B9A4-4D81-8B13-D579BA0A438B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57F909F6-B9A4-4D81-8B13-D579BA0A438B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1B7249-F6B9-40DE-A883-B4B5A251A171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1B7249-F6B9-40DE-A883-B4B5A251A171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1B7249-F6B9-40DE-A883-B4B5A251A171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1B7249-F6B9-40DE-A883-B4B5A251A171}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B1B7249-F6B9-40DE-A883-B4B5A251A171} = {7D7376E9-C365-4A2D-A3B1-534872462BA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53FE7FE8-C5CF-40DC-8886-BC143DAEF7DD}

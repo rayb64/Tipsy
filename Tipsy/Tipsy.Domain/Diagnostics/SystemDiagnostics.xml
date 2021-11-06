@@ -1,0 +1,140 @@
+﻿<system.diagnostics>
+  <trace autoflush="true" indentsize="2" />
+  <sharedListeners>
+  <!--
+  Possible values for source levels: Off, Critical, Error, Warning, Information, Verbose, ActivityTracing, All
+  -->
+        <add name="fileLog"
+             type="Com.Gmail.Birklid.Ray.Diagnostics.RollingFileTraceListener,Core.Library" initializeData="Tipsy.log">
+            <filter type="System.Diagnostics.EventTypeFilter"
+                initializeData="All" />
+        </add>
+    <add name="consoleLog"
+         type="System.Diagnostics.ConsoleTraceListener">
+      <filter type="System.Diagnostics.EventTypeFilter"
+              initializeData="Off" />
+    </add>
+    </sharedListeners>
+    <sources>
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Application                                                              -->
+      <!-- ******************************************************************************** -->
+      <source name="Application"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Controller                                                               -->
+      <!-- ******************************************************************************** -->
+      <source name="Controller"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Data                                                                     -->
+      <!-- ******************************************************************************** -->
+      <source name="Data"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: DataModel                                                                -->
+      <!-- ******************************************************************************** -->
+      <source name="DataModel"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Global                                                                   -->
+      <!-- ******************************************************************************** -->
+      <source name="Global"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: IO                                                                       -->
+      <!-- ******************************************************************************** -->
+      <source name="IO"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Service                                                                  -->
+      <!-- ******************************************************************************** -->
+      <source name="Service"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Test                                                                     -->
+      <!-- ******************************************************************************** -->
+      <source name="Test"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: Threading                                                                -->
+      <!-- ******************************************************************************** -->
+      <source name="Threading"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+      <!-- ******************************************************************************** -->
+      <!-- SOURCE: ViewModel                                                                -->
+      <!-- ******************************************************************************** -->
+      <source name="ViewModel"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+    </sources>
+</system.diagnostics>

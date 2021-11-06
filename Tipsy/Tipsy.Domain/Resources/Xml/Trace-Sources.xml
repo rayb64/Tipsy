@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TraceSourceNames>
+  <TraceSource Name="Application"><![CDATA[Used for the application layer.]]></TraceSource>
+  <TraceSource Name="Controller"><![CDATA[Used for 'controller' types; generally in the application layer.]]></TraceSource>
+  <TraceSource Name="Data"><![CDATA[Used for the data layer.]]></TraceSource>
+  <TraceSource Name="DataModel"><![CDATA[Used for data-model types.]]></TraceSource>
+  <TraceSource Name="Global"><![CDATA[Catch all/default.]]></TraceSource>
+  <TraceSource Name="IO"><![CDATA[Used for types concerned with I/O.]]></TraceSource>
+  <TraceSource Name="Service"><![CDATA[Used for service types.]]></TraceSource>
+  <TraceSource Name="Test"><![CDATA[Used for test classes.]]></TraceSource>
+  <TraceSource Name="Threading"><![CDATA[Used for types concerned with threading/concurrency.]]></TraceSource>
+  <TraceSource Name="ViewModel"><![CDATA[Used for view-model types.]]></TraceSource>
+</TraceSourceNames>

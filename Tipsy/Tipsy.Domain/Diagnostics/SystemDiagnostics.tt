@@ -1,0 +1,67 @@
+﻿<# // ----------------------------------------------------------------------------- #>
+<# // This T4 template generates the system.diagnostics node for an app.config file #>
+<# // ----------------------------------------------------------------------------- #>
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".xml" #>
+<#@ assembly name="System.Linq.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.XDocument.dll" #>
+<#@ assembly name="System.Xml.Linq.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="netstandard.dll" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<system.diagnostics>
+  <trace autoflush="true" indentsize="2" />
+  <sharedListeners>
+  <!--
+  Possible values for source levels: <#=string.Join(", ", Enum.GetNames(typeof(System.Diagnostics.SourceLevels)))#>
+  -->
+        <add name="fileLog"
+             type="Com.Gmail.Birklid.Ray.Diagnostics.RollingFileTraceListener,Core.Library" initializeData="Tipsy.log">
+            <filter type="System.Diagnostics.EventTypeFilter"
+                initializeData="All" />
+        </add>
+    <add name="consoleLog"
+         type="System.Diagnostics.ConsoleTraceListener">
+      <filter type="System.Diagnostics.EventTypeFilter"
+              initializeData="Off" />
+    </add>
+    </sharedListeners>
+    <sources>
+<#
+var names = GetTraceSourceNames();
+var emptyComment = string.Format("<!-- {0} -->", new string('*', 80));
+foreach (var name in names)
+{
+    var comment = string.Format("<!-- SOURCE: {0} ", name).PadRight(86, ' ') + "-->";
+#>
+      <#=emptyComment#>
+      <#=comment#>
+      <#=emptyComment#>
+      <source name="<#=name#>"
+              switchValue="All">
+        <listeners>
+          <remove name="default" />
+          <add name="fileLog" />
+          <add name="consoleLog" />
+        </listeners>
+      </source>
+
+<#
+}
+#>
+    </sources>
+</system.diagnostics>
+<#+
+IEnumerable<string> GetTraceSourceNames()
+{
+    string fileName = this.Host.ResolvePath("../Resources/Xml/Trace-Sources.xml");
+    var doc = XDocument.Load(fileName);
+    var names = doc.Root.Elements().Select(e => e.Attribute("Name").Value);
+    return names;
+}
+#>
