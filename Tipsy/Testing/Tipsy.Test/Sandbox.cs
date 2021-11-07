@@ -115,5 +115,50 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
             Assert.AreEqual(22, current.Time.Hour);
             Assert.AreEqual(0, current.Time.Minute);
         }
+
+        [TestMethod]
+        public void Temporary_TestCalculator()
+        {
+            var ent = new Entities() as IEntities;
+            var calculator = new Logic.Calculator();
+            var today = ent.Days.Today;
+
+            ent.People.CreateNew("Joe");
+            ent.People.CreateNew("Ray");
+
+            // First, Ray clocks on
+            var entry = today.Entries.CreateNew();
+            entry.Action = DayAction.ClockOn;
+            entry.ETips = 0;
+            entry.Person = ent.People.Single(e => e.Name == "Ray");
+            entry.Time = DateTime.Parse("November 7, 2021 10:00 AM");
+
+            // Next, Joe clocks on
+            entry = today.Entries.CreateNew();
+            entry.Action = DayAction.ClockOn;
+            entry.ETips = 50;
+            entry.Person = ent.People.Single(e => e.Name == "Joe");
+            entry.Time = DateTime.Parse("November 7, 2021 2:00 PM");
+
+            // Then, Ray clocks off
+            entry = today.Entries.CreateNew();
+            entry.Action = DayAction.ClockOff;
+            entry.ETips = 250;
+            entry.Person = ent.People.Single(e => e.Name == "Ray");
+            entry.Time = DateTime.Parse("November 7, 2021 6:00 PM");
+
+            // Finally, Joe clocks off
+            entry = today.Entries.CreateNew();
+            entry.Action = DayAction.ClockOff;
+            entry.ETips = 310;
+            entry.Person = ent.People.Single(e => e.Name == "Joe");
+            entry.Time = DateTime.Parse("November 7, 2021 10:00 PM");
+
+            var results = calculator.Run(today);
+            foreach(var item in results)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }

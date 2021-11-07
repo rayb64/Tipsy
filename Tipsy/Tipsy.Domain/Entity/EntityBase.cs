@@ -6,6 +6,7 @@
 // <Date>11/5/2021 4:12:13 PM</Date>
 namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 {
+    using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -27,6 +28,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
             long id)
             : base()
         {
+            EntityTraceSource.Instance.Created(this);
             Created = DateTime.Now;
             Id = id;
         }

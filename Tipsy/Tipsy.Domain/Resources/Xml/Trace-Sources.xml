@@ -4,8 +4,10 @@
   <TraceSource Name="Controller"><![CDATA[Used for 'controller' types; generally in the application layer.]]></TraceSource>
   <TraceSource Name="Data"><![CDATA[Used for the data layer.]]></TraceSource>
   <TraceSource Name="DataModel"><![CDATA[Used for data-model types.]]></TraceSource>
+  <TraceSource Name="Entity"><![CDATA[Used for entity types.]]></TraceSource>
   <TraceSource Name="Global"><![CDATA[Catch all/default.]]></TraceSource>
   <TraceSource Name="IO"><![CDATA[Used for types concerned with I/O.]]></TraceSource>
+  <TraceSource Name="Logic"><![CDATA[Used for types concerned with business logic.]]></TraceSource>
   <TraceSource Name="Service"><![CDATA[Used for service types.]]></TraceSource>
   <TraceSource Name="Test"><![CDATA[Used for test classes.]]></TraceSource>
   <TraceSource Name="Threading"><![CDATA[Used for types concerned with threading/concurrency.]]></TraceSource>

@@ -7,7 +7,7 @@
 // <Company>Birklid Software</Company>
 // <Author>Ray Birklid</Author>
 // <Email>Ray.Birklid@gmail.com</Email>
-// <Date>11/6/2021 10:51:34 PM</Date>
+// <Date>11/7/2021 2:21:00 PM</Date>
 namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
 {
     using System.Diagnostics;
@@ -126,6 +126,32 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
     }
 
     /// <summary>
+    /// A singleton implementation of a TraceSource used for entity types.
+    /// </summary>
+    public class EntityTraceSource : Logger
+    {
+        #region Private Fields
+
+        private static readonly EntityTraceSource instance = new EntityTraceSource();
+
+        #endregion Private Fields
+
+        #region Creation
+
+        private EntityTraceSource()
+            : base("Entity")
+        {
+        }
+
+        #endregion Creation
+
+        /// <summary>
+        /// Gets the instance of this TraceSource.
+        /// </summary>
+        public static Logger Instance { get { return EntityTraceSource.instance; } }
+    }
+
+    /// <summary>
     /// A singleton implementation of a TraceSource catch all/default.
     /// </summary>
     public class GlobalTraceSource : Logger
@@ -175,6 +201,32 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
         /// Gets the instance of this TraceSource.
         /// </summary>
         public static Logger Instance { get { return IOTraceSource.instance; } }
+    }
+
+    /// <summary>
+    /// A singleton implementation of a TraceSource used for types concerned with business logic.
+    /// </summary>
+    public class LogicTraceSource : Logger
+    {
+        #region Private Fields
+
+        private static readonly LogicTraceSource instance = new LogicTraceSource();
+
+        #endregion Private Fields
+
+        #region Creation
+
+        private LogicTraceSource()
+            : base("Logic")
+        {
+        }
+
+        #endregion Creation
+
+        /// <summary>
+        /// Gets the instance of this TraceSource.
+        /// </summary>
+        public static Logger Instance { get { return LogicTraceSource.instance; } }
     }
 
     /// <summary>
