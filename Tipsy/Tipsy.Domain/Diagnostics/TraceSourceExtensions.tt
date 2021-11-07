@@ -1,0 +1,129 @@
+﻿<# // ------------------------------------------------------------------ #>
+<# // This T4 template generates all of the common TraceSource classes  #>
+<# // ------------------------------------------------------------------ #>
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Linq.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.XDocument.dll" #>
+<#@ assembly name="System.Xml.Linq.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="netstandard.dll" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Xml.XPath" #>
+// ****************************************************************************
+// NOTE: This file was automatically generated from a text template.
+//       Modify at your own risk.
+// ****************************************************************************
+// <Copyright>Copyright (c) Birklid Software. All rights reserved.</Copyright>
+// <File>TraceSourceExtensions.cs</File>
+// <Company>Birklid Software</Company>
+// <Author>Ray Birklid</Author>
+// <Email>Ray.Birklid@gmail.com</Email>
+// <Date><#=string.Format("{0:d} {0:T}", System.DateTime.Now)#></Date>
+namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Linq;
+    using System.Runtime.CompilerServices;
+    using System.Text;
+    using System.Threading.Tasks;
+ 
+    public static class TraceSourceExtensions
+    {
+        #region Private Fields
+
+        private static readonly IIdFactory _idFactory = new IdFactory();
+
+        #endregion Private Fields
+
+        #region Basic Tracing Methods
+
+<# foreach (var name in Enum.GetNames(typeof(TraceEventType)).OrderBy(e => e))
+{
+#>
+        public static string <#=name#>(
+            this TraceSource traceSource,
+            string message)
+        {
+            traceSource.TraceEvent(TraceEventType.<#=name#>, _idFactory.NextInt(traceSource), message);
+            return message;
+        }
+
+        public static string <#=name#><T>(
+            this TraceSource traceSource,
+            T obj)
+        {
+            return <#=name#>(traceSource, obj == null ? "(null)" : obj.ToString());
+        }
+
+        public static string <#=name#>(
+            this TraceSource traceSource,
+            string format,
+            params object[] args)
+        {
+            var message = string.Format(CultureInfo.InvariantCulture, format, args);
+            return <#=name#>(traceSource, message);
+        }
+
+<#
+}
+#>        #endregion Basic Tracing Methods
+
+        #region Extended Tracing Methods
+
+        public static string Created<T>(
+            this TraceSource traceSource,
+            T obj)
+        {
+            return Created(traceSource, obj.GetType());
+        }
+
+        public static string Created(
+            this TraceSource traceSource,
+            Type type)
+        {
+            return Verbose(traceSource, "Created instance of {0}", NameFromType(type));
+        }
+
+        public static string MethodCall<T>(
+            this TraceSource traceSource,
+            T obj,
+            [CallerMemberName] string methodName = null,
+            params object[] args)
+        {
+            return MethodCall(traceSource, obj.GetType(), methodName, args);
+        }
+
+        public static string MethodCall(
+            this TraceSource traceSource,
+            Type type,
+            [CallerMemberName] string methodName = null,
+            params object[] args)
+        {
+            var message = string.Format(CultureInfo.InvariantCulture, "Method called {0}:{1}", NameFromType(type), methodName);
+            if (args != null && args.Length != 0)
+            {
+                message = string.Format(CultureInfo.InvariantCulture, "{0}({1})", message, string.Join(", ", args.Select(e => e == null ? "(null)" : e.ToString())));
+            }
+            return Verbose(traceSource, message);
+        }
+
+        #endregion Extended Tracing Methods
+
+        #region Private Members
+
+        // Used for consistency...  I may want to switch to FullName later
+        private static string NameFromType(Type type) => type.Name;
+
+        #endregion Private Members
+    }
+}

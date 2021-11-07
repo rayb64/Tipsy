@@ -7,14 +7,14 @@
 // <Company>Birklid Software</Company>
 // <Author>Ray Birklid</Author>
 // <Email>Ray.Birklid@gmail.com</Email>
-// <Date>11/6/2021 7:20:31 AM</Date>
-namespace Com.Gmail.Birklid.Ray.Diagnostics
+// <Date>11/6/2021 10:51:34 PM</Date>
+namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
 {
     using System.Diagnostics;
 
-    public class TraceSourceBase : TraceSource
+    public class Logger : TraceSource
     {
-        protected TraceSourceBase(
+        protected Logger(
             string name)
             : base(name)
         {
@@ -24,7 +24,7 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
     /// <summary>
     /// A singleton implementation of a TraceSource used for the application layer.
     /// </summary>
-    public class ApplicationTraceSource : TraceSourceBase
+    public class ApplicationTraceSource : Logger
     {
         #region Private Fields
 
@@ -44,13 +44,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return ApplicationTraceSource.instance; } }
+        public static Logger Instance { get { return ApplicationTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for 'controller' types; generally in the application layer.
     /// </summary>
-    public class ControllerTraceSource : TraceSourceBase
+    public class ControllerTraceSource : Logger
     {
         #region Private Fields
 
@@ -70,13 +70,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return ControllerTraceSource.instance; } }
+        public static Logger Instance { get { return ControllerTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for the data layer.
     /// </summary>
-    public class DataTraceSource : TraceSourceBase
+    public class DataTraceSource : Logger
     {
         #region Private Fields
 
@@ -96,13 +96,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return DataTraceSource.instance; } }
+        public static Logger Instance { get { return DataTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for data-model types.
     /// </summary>
-    public class DataModelTraceSource : TraceSourceBase
+    public class DataModelTraceSource : Logger
     {
         #region Private Fields
 
@@ -122,13 +122,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return DataModelTraceSource.instance; } }
+        public static Logger Instance { get { return DataModelTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource catch all/default.
     /// </summary>
-    public class GlobalTraceSource : TraceSourceBase
+    public class GlobalTraceSource : Logger
     {
         #region Private Fields
 
@@ -148,13 +148,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return GlobalTraceSource.instance; } }
+        public static Logger Instance { get { return GlobalTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for types concerned with i/o.
     /// </summary>
-    public class IOTraceSource : TraceSourceBase
+    public class IOTraceSource : Logger
     {
         #region Private Fields
 
@@ -174,13 +174,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return IOTraceSource.instance; } }
+        public static Logger Instance { get { return IOTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for service types.
     /// </summary>
-    public class ServiceTraceSource : TraceSourceBase
+    public class ServiceTraceSource : Logger
     {
         #region Private Fields
 
@@ -200,13 +200,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return ServiceTraceSource.instance; } }
+        public static Logger Instance { get { return ServiceTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for test classes.
     /// </summary>
-    public class TestTraceSource : TraceSourceBase
+    public class TestTraceSource : Logger
     {
         #region Private Fields
 
@@ -226,13 +226,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return TestTraceSource.instance; } }
+        public static Logger Instance { get { return TestTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for types concerned with threading/concurrency.
     /// </summary>
-    public class ThreadingTraceSource : TraceSourceBase
+    public class ThreadingTraceSource : Logger
     {
         #region Private Fields
 
@@ -252,13 +252,13 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return ThreadingTraceSource.instance; } }
+        public static Logger Instance { get { return ThreadingTraceSource.instance; } }
     }
 
     /// <summary>
     /// A singleton implementation of a TraceSource used for view-model types.
     /// </summary>
-    public class ViewModelTraceSource : TraceSourceBase
+    public class ViewModelTraceSource : Logger
     {
         #region Private Fields
 
@@ -278,6 +278,6 @@ namespace Com.Gmail.Birklid.Ray.Diagnostics
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return ViewModelTraceSource.instance; } }
+        public static Logger Instance { get { return ViewModelTraceSource.instance; } }
     }
 }

@@ -6,6 +6,7 @@
 // <Date>11/5/2021 3:12:30 PM</Date>
 namespace Com.Gmail.Birklid.Ray.Tipsy
 {
+    using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using Com.Gmail.Birklid.Ray.Tipsy.Views;
     using Prism.Ioc;
     using Prism.Modularity;
@@ -16,6 +17,11 @@ namespace Com.Gmail.Birklid.Ray.Tipsy
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            ApplicationTraceSource.Instance.Created(this);
+        }
+
         protected override void OnStartup(
             StartupEventArgs e)
         {

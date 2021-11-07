@@ -21,7 +21,7 @@
   Possible values for source levels: <#=string.Join(", ", Enum.GetNames(typeof(System.Diagnostics.SourceLevels)))#>
   -->
         <add name="fileLog"
-             type="Com.Gmail.Birklid.Ray.Diagnostics.RollingFileTraceListener,Core.Library" initializeData="Tipsy.log">
+             type="Com.Gmail.Birklid.Ray.Tipsy.Diagnostics.RollingFileTraceListener,Tipsy.Domain" initializeData="Tipsy.log">
             <filter type="System.Diagnostics.EventTypeFilter"
                 initializeData="All" />
         </add>

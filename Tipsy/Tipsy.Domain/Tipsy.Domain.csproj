@@ -50,6 +50,11 @@
   <ItemGroup>
     <Compile Include="CheckArg.cs" />
     <Compile Include="Diagnostics\RollingFileTraceListener.cs" />
+    <Compile Include="Diagnostics\TraceSourceExtensions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TraceSourceExtensions.tt</DependentUpon>
+    </Compile>
     <Compile Include="Diagnostics\TraceSources.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +94,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SystemDiagnostics.tt</DependentUpon>
+    </Content>
+    <Content Include="Diagnostics\TraceSourceExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TraceSourceExtensions.cs</LastGenOutput>
     </Content>
     <Content Include="Diagnostics\TraceSources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -25,13 +25,13 @@
 // <Author>Ray Birklid</Author>
 // <Email>Ray.Birklid@gmail.com</Email>
 // <Date><#=string.Format("{0:d} {0:T}", System.DateTime.Now)#></Date>
-namespace Com.Gmail.Birklid.Ray.Diagnostics
+namespace Com.Gmail.Birklid.Ray.Tipsy.Diagnostics
 {
     using System.Diagnostics;
 
-    public class TraceSourceBase : TraceSource
+    public class Logger : TraceSource
     {
-        protected TraceSourceBase(
+        protected Logger(
             string name)
             : base(name)
         {
@@ -47,7 +47,7 @@ var name = element.Attribute("Name").Value;
     /// <summary>
     /// A singleton implementation of a TraceSource <#=element.Value.ToLower()#>
     /// </summary>
-    public class <#=name#>TraceSource : TraceSourceBase
+    public class <#=name#>TraceSource : Logger
     {
         #region Private Fields
 
@@ -67,7 +67,7 @@ var name = element.Attribute("Name").Value;
         /// <summary>
         /// Gets the instance of this TraceSource.
         /// </summary>
-        public static TraceSourceBase Instance { get { return <#=name#>TraceSource.instance; } }
+        public static Logger Instance { get { return <#=name#>TraceSource.instance; } }
     }
 <#
 }
