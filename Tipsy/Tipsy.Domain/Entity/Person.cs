@@ -18,11 +18,11 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
     }
 
     [Serializable]
-    public class Person : EntityBase
+    public class Person : EntityBase, IPerson
     {
         #region Creation
 
-        internal Person(
+        public Person(
             long id)
             : base(id)
         {
@@ -37,6 +37,24 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
         #endregion IEntityBase Members
 
         #region Object Overrides
+
+        public override bool Equals(
+            object obj)
+        {
+            return obj is Person person &&
+                   Created == person.Created &&
+                   Id == person.Id &&
+                   Name == person.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -156448111;
+            hashCode = hashCode * -1521134295 + Created.GetHashCode();
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
+        }
 
         public override string ToString()
         {

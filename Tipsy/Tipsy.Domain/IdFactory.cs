@@ -79,7 +79,9 @@ namespace Com.Gmail.Birklid.Ray.Tipsy
 
         public override string ToString()
         {
-            return _lookup.Count + " types registered.";
+            return _lookup.Count == 1
+                ? _lookup.Count + " type is registered."
+                : _lookup.Count + " types are registered.";
         }
 
         #endregion Object Overrides
