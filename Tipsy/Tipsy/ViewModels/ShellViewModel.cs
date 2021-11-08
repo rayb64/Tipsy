@@ -11,22 +11,30 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
 
-    public class ShellViewModel : BindableBase
+    public class ShellViewModel : ViewModelBase
     {
         #region Private Fields
 
+        private readonly IApplicationCommands _commands;
         private string _title = Properties.Resources.ShellTitle;
 
         #endregion Private Fields
 
         #region Creation
 
-        public ShellViewModel()
+        public ShellViewModel(
+            IApplicationCommands commands)
         {
+            CheckArg.IsNotDefault(commands, nameof(commands));
+            _commands = commands;
         }
 
         #endregion Creation
+
+        public IApplicationCommands Commands => _commands;
 
         public string Title
         {

@@ -117,7 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExitMenu" xml:space="preserve">
+    <value>E_xit</value>
+  </data>
+  <data name="FileMenu" xml:space="preserve">
+    <value>_File</value>
+  </data>
+  <data name="HistoryHeader" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="HistoryMenu" xml:space="preserve">
+    <value>_History</value>
+  </data>
+  <data name="PeopleHeader" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="PeopleMenu" xml:space="preserve">
+    <value>_People</value>
+  </data>
   <data name="ShellTitle" xml:space="preserve">
     <value>Tipsy</value>
+  </data>
+  <data name="TodayHeader" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="TodayMenu" xml:space="preserve">
+    <value>_Today</value>
+  </data>
+  <data name="ViewMenu" xml:space="preserve">
+    <value>_View</value>
   </data>
 </root>

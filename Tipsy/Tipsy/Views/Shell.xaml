@@ -2,12 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:Com.Gmail.Birklid.Ray.Tipsy.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        Icon="pack://application:,,,/Tipsy;component/Resources/Images/money.ico"
         Title="{Binding Title}"
+        Background="{StaticResource _defaultBackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         Height="650"
         Width="800">
-    <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
-    </Grid>
+    <DockPanel>
+        <local:ShellMenu DockPanel.Dock="Top" />
+        <Grid>
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        </Grid>
+    </DockPanel>
 </Window>

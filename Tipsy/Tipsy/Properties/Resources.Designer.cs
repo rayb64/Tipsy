@@ -22,7 +22,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Com.Gmail.Birklid.Ray.Tipsy.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,92 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E_xit.
+        /// </summary>
+        public static string ExitMenu {
+            get {
+                return ResourceManager.GetString("ExitMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _File.
+        /// </summary>
+        public static string FileMenu {
+            get {
+                return ResourceManager.GetString("FileMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        public static string HistoryHeader {
+            get {
+                return ResourceManager.GetString("HistoryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _History.
+        /// </summary>
+        public static string HistoryMenu {
+            get {
+                return ResourceManager.GetString("HistoryMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People.
+        /// </summary>
+        public static string PeopleHeader {
+            get {
+                return ResourceManager.GetString("PeopleHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _People.
+        /// </summary>
+        public static string PeopleMenu {
+            get {
+                return ResourceManager.GetString("PeopleMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tipsy.
         /// </summary>
-        internal static string ShellTitle {
+        public static string ShellTitle {
             get {
                 return ResourceManager.GetString("ShellTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today.
+        /// </summary>
+        public static string TodayHeader {
+            get {
+                return ResourceManager.GetString("TodayHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Today.
+        /// </summary>
+        public static string TodayMenu {
+            get {
+                return ResourceManager.GetString("TodayMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _View.
+        /// </summary>
+        public static string ViewMenu {
+            get {
+                return ResourceManager.GetString("ViewMenu", resourceCulture);
             }
         }
     }

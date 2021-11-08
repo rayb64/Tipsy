@@ -1,5 +1,6 @@
 ﻿namespace Com.Gmail.Birklid.Ray.Tipsy.Views
 {
+    using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using System.Windows;
 
     /// <summary>
@@ -9,6 +10,7 @@
     {
         public Shell()
         {
+            ApplicationTraceSource.Instance.Created(this);
             InitializeComponent();
         }
     }

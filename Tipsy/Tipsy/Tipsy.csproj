@@ -62,8 +62,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Converters\ContentConverter.cs" />
+    <Compile Include="DataModels\ButtonDataModel.cs" />
+    <Compile Include="ViewModels\HistoryViewModel.cs" />
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TodayViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ButtonPanel.xaml.cs">
+      <DependentUpon>ButtonPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\History.xaml.cs">
+      <DependentUpon>History.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\People.xaml.cs">
+      <DependentUpon>People.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -71,7 +87,44 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\ShellMenu.xaml.cs">
+      <DependentUpon>ShellMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Today.xaml.cs">
+      <DependentUpon>Today.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewHeader.xaml.cs">
+      <DependentUpon>ViewHeader.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\ControlResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ButtonPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\History.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\People.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShellMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Today.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,7 +144,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -116,6 +169,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\add_24x24.png" />
+    <Resource Include="Resources\Images\calculator_16x16.png" />
+    <Resource Include="Resources\Images\exit.png" />
+    <Resource Include="Resources\Images\help_16x16.png" />
+    <Resource Include="Resources\Images\money.ico" />
+    <Resource Include="Resources\Images\money_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
