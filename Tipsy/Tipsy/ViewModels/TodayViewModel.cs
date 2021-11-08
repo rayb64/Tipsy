@@ -10,42 +10,66 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
     using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using Prism.Commands;
     using Prism.Mvvm;
+    using Prism.Regions;
+    using Prism.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class TodayViewModel : BindableBase
+    public class TodayViewModel : ContentViewModelBase, INavigationAware
     {
-        #region Private Fields
-
-        private readonly ButtonDataModel[] _buttons;
-        private string _title = Properties.Resources.TodayHeader;
-
-        #endregion Private Fields
-
         #region Creation
 
         public TodayViewModel()
+            : base(Properties.Resources.TodayHeader, InitializeButtons())
         {
-            _buttons = InitializeButtons().ToArray();
+            Buttons.Single(e => e.Name == "Add").Command = new DelegateCommand(OnAdd);
+            Buttons.Single(e => e.Name == "Calculate").Command = new DelegateCommand(OnCalculate);
         }
 
         #endregion Creation
 
-        public IEnumerable<ButtonDataModel> Buttons => _buttons;
+        #region INavigationAware Members
 
-        public string Title
+        public bool IsNavigationTarget(NavigationContext navigationContext) => true;
+
+        public void OnNavigatedFrom(
+            NavigationContext navigationContext)
         {
-            get => _title;
-            set => SetProperty(ref _title, value);
         }
+
+        public void OnNavigatedTo(
+            NavigationContext navigationContext)
+        {
+        }
+
+        #endregion INavigationAware Members
+
+        #region ContentViewModelBase Overrides
+
+        protected override void OnHelp()
+        {
+            Log.MethodCall(this);
+        }
+
+        #endregion ContentViewModelBase Overrides
 
         #region Private Members
 
-        private IEnumerable<ButtonDataModel> InitializeButtons()
+        private static IEnumerable<ButtonDataModel> InitializeButtons()
         {
-            yield return new ButtonDataModel { Content = "_addImage" };
-            yield return new ButtonDataModel { Content = "_calculatorImage" };
+            yield return new ButtonDataModel { Content = "_addImage", Name = "Add", ToolTip = Properties.Resources.DayEntry_AddToolTip };
+            yield return new ButtonDataModel { Content = "_calculatorImage", Name = "Calculate", ToolTip = Properties.Resources.DayEntry_CalculatorToolTip };
+        }
+
+        private void OnAdd()
+        {
+            Log.MethodCall(this);
+        }
+
+        private void OnCalculate()
+        {
+            Log.MethodCall(this);
         }
 
         #endregion Private Members

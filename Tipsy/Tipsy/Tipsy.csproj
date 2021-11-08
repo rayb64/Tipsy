@@ -66,6 +66,7 @@
     <Compile Include="Bootstrap\Bootstrapper.cs" />
     <Compile Include="Converters\ContentConverter.cs" />
     <Compile Include="DataModels\ButtonDataModel.cs" />
+    <Compile Include="ViewModels\ContentViewModelBase.cs" />
     <Compile Include="ViewModels\HistoryViewModel.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

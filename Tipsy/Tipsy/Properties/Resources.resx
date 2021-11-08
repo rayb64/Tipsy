@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DayEntry_AddToolTip" xml:space="preserve">
+    <value>Add a new entry for today</value>
+  </data>
+  <data name="DayEntry_CalculatorToolTip" xml:space="preserve">
+    <value>Calculate the tips for today</value>
+  </data>
   <data name="ExitMenu" xml:space="preserve">
     <value>E_xit</value>
   </data>
   <data name="FileMenu" xml:space="preserve">
     <value>_File</value>
+  </data>
+  <data name="HelpToolTip" xml:space="preserve">
+    <value>Get a little help</value>
   </data>
   <data name="HistoryHeader" xml:space="preserve">
     <value>History</value>
@@ -134,6 +143,9 @@
   </data>
   <data name="PeopleMenu" xml:space="preserve">
     <value>_People</value>
+  </data>
+  <data name="People_AddToolTip" xml:space="preserve">
+    <value>Add a new person</value>
   </data>
   <data name="ShellTitle" xml:space="preserve">
     <value>Tipsy</value>

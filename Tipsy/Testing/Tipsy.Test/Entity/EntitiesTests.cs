@@ -1,27 +1,29 @@
 ﻿// <Copyright>Copyright (c) Birklid Software. All rights reserved.</Copyright>
-// <File>Sandbox.cs</File>
+// <File>EntitiesTests.cs</File>
 // <Company>Birklid Software</Company>
 // <Author>Ray Birklid</Author>
 // <Email>Ray.Birklid@gmail.com</Email>
-// <Date>11/7/2021 7:36:43 AM</Date>
-namespace Com.Gmail.Birklid.Ray.Tipsy.Test
+// <Date>11/7/2021 10:32:03 PM</Date>
+namespace Com.Gmail.Birklid.Ray.Tipsy.Test.Entity
 {
-    using Com.Gmail.Birklid.Ray.Tipsy;
     using Com.Gmail.Birklid.Ray.Tipsy.Entity;
-    using Com.Gmail.Birklid.Ray.Tipsy.Logic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
-    // This class is for prototyping and testing ideas.
-
     [TestClass]
-    public class Sandbox
+    public class EntitiesTests : TestBase
     {
         [TestMethod]
-        public void WorkingWithEntities()
+        public void CheckDefaults()
+        {
+            var entities = new Entities();
+            Assert.AreEqual(0, entities.Days.Count);
+            Assert.AreEqual(0, entities.People.Count);
+        }
+
+        [TestMethod]
+        public void TypicalUsage()
         {
             var ent = new Entities() as IEntities;
             var joe = ent.People.CreateNew("Joe");
@@ -117,51 +119,6 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
             Assert.AreEqual("Joe", current.Person.Name);
             Assert.AreEqual(22, current.Time.Hour);
             Assert.AreEqual(0, current.Time.Minute);
-        }
-
-        [TestMethod]
-        public void Temporary_TestCalculator()
-        {
-            var ent = new Entities() as IEntities;
-            var calculator = new Calculator();
-            var today = ent.Days.Today;
-
-            ent.People.CreateNew("Joe");
-            ent.People.CreateNew("Ray");
-
-            // First, Ray clocks on
-            var entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOn;
-            entry.ETips = 0;
-            entry.Person = ent.People.Single(e => e.Name == "Ray");
-            entry.Time = DateTime.Parse("November 7, 2021 10:00 AM");
-
-            // Next, Joe clocks on
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOn;
-            entry.ETips = 50;
-            entry.Person = ent.People.Single(e => e.Name == "Joe");
-            entry.Time = DateTime.Parse("November 7, 2021 2:00 PM");
-
-            // Then, Ray clocks off
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOff;
-            entry.ETips = 250;
-            entry.Person = ent.People.Single(e => e.Name == "Ray");
-            entry.Time = DateTime.Parse("November 7, 2021 6:00 PM");
-
-            // Finally, Joe clocks off
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOff;
-            entry.ETips = 310;
-            entry.Person = ent.People.Single(e => e.Name == "Joe");
-            entry.Time = DateTime.Parse("November 7, 2021 10:00 PM");
-
-            var results = calculator.Run(today);
-            foreach (var item in results)
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }

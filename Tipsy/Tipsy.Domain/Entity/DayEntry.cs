@@ -32,6 +32,8 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
             long id)
             : base(id)
         {
+            Time = DateTime.Now;
+            BankDescription = string.Empty;
         }
 
         #endregion Creation

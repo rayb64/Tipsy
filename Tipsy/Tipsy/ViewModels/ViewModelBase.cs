@@ -18,7 +18,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
     {
         #region Creation
 
-        public ViewModelBase()
+        protected ViewModelBase()
             : base()
         {
             Log.Created(this);

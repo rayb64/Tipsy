@@ -14,41 +14,11 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
     using System.Collections.Generic;
     using System.Linq;
 
-    public class HistoryViewModel : ViewModelBase
+    public class HistoryViewModel : ContentViewModelBase
     {
-        #region Private Fields
-
-        private readonly ButtonDataModel[] _buttons;
-        private string _title = Properties.Resources.HistoryHeader;
-
-        #endregion Private Fields
-
-        #region Creation
-
         public HistoryViewModel()
+            : base(Properties.Resources.HistoryHeader, new ButtonDataModel[0])
         {
-            _buttons = InitializeButtons().ToArray();
         }
-
-        #endregion Creation
-
-        public IEnumerable<ButtonDataModel> Buttons => _buttons;
-      
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
-        }
-
-        #region Private Members
-
-        private IEnumerable<ButtonDataModel> InitializeButtons()
-        {
-            yield return new ButtonDataModel { Content = "Add" };
-            yield return new ButtonDataModel { Content = "Edit" };
-            yield return new ButtonDataModel { Content = "Remove" };
-        }
-
-        #endregion Private Members
     }
 }

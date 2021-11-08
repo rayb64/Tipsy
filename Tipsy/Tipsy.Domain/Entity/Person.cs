@@ -26,6 +26,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
             long id)
             : base(id)
         {
+            Name = string.Empty;
         }
 
         #endregion Creation

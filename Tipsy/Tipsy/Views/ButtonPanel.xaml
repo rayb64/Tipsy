@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:Com.Gmail.Birklid.Ray.Tipsy.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="28" />
             <Setter Property="Height" Value="28" />
             <Setter Property="Margin" Value="4,0" />
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
     <ItemsControl ItemsSource="{Binding Buttons}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
@@ -21,7 +21,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button Content="{Binding Content, Converter={StaticResource _contentConverter}}" />
+                <Button Content="{Binding Content, Converter={StaticResource _contentConverter}}" Style="{StaticResource _toolButton}" Command="{Binding Command}" ToolTip="{Binding ToolTip}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>

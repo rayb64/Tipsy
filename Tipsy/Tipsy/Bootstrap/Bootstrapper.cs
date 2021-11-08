@@ -10,6 +10,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
     using Com.Gmail.Birklid.Ray.Tipsy.Views;
     using Prism.DryIoc;
     using Prism.Ioc;
+    using Prism.Regions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -24,7 +25,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
         internal Bootstrapper()
             : base()
         {
-            ApplicationTraceSource.Instance.Created(this);
+            Log.Created(this);
         }
 
         #endregion Creation
@@ -33,14 +34,20 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
 
         protected override DependencyObject CreateShell()
         {
-            ApplicationTraceSource.Instance.MethodCall(this);
+            Log.MethodCall(this);
             return new Shell();
+        }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            Container.Resolve<IRegionManager>().RequestNavigate("ContentRegion", Properties.Settings.Default.DefaultView);
         }
 
         protected override void RegisterTypes(
             IContainerRegistry containerRegistry)
         {
-            ApplicationTraceSource.Instance.MethodCall(this);
+            Log.MethodCall(this);
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterForNavigation<History>();
             containerRegistry.RegisterForNavigation<Today>();
@@ -48,5 +55,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
         }
 
         #endregion PrismBootstrapper Overrides
+
+        private Logger Log => ApplicationTraceSource.Instance;
     }
 }

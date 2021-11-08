@@ -38,11 +38,6 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
             _idFactory = idFactory;
         }
 
-        public PersonCollection()
-            : this(new IdFactory())
-        {
-        }
-
         #endregion Creation
 
         #region IPersonCollection Members

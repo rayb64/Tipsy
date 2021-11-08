@@ -61,6 +61,24 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a new entry for today.
+        /// </summary>
+        public static string DayEntry_AddToolTip {
+            get {
+                return ResourceManager.GetString("DayEntry_AddToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculate the tips for today.
+        /// </summary>
+        public static string DayEntry_CalculatorToolTip {
+            get {
+                return ResourceManager.GetString("DayEntry_CalculatorToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E_xit.
         /// </summary>
         public static string ExitMenu {
@@ -79,6 +97,15 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get a little help.
+        /// </summary>
+        public static string HelpToolTip {
+            get {
+                return ResourceManager.GetString("HelpToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
         public static string HistoryHeader {
@@ -93,6 +120,15 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         public static string HistoryMenu {
             get {
                 return ResourceManager.GetString("HistoryMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new person.
+        /// </summary>
+        public static string People_AddToolTip {
+            get {
+                return ResourceManager.GetString("People_AddToolTip", resourceCulture);
             }
         }
         

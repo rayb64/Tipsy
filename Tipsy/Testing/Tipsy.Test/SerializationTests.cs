@@ -7,13 +7,15 @@
 namespace Com.Gmail.Birklid.Ray.Tipsy.Test
 {
     using Com.Gmail.Birklid.Ray.Tipsy;
+    using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
+    using Com.Gmail.Birklid.Ray.Tipsy.Entity;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.IO;
     using System.Runtime.Serialization.Formatters.Binary;
 
     [TestClass]
-    public class SerializationTests
+    public class SerializationTests : TestBase
     {
         #region Private Fields
 
@@ -49,19 +51,27 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
         public static void VerifyIsSerializable<T>(
             T obj)
         {
+            Log.Information("Checking type for serialization: {0}", obj.GetType());
             Assert.IsNotNull(obj);
             var cloned = Clone(obj);
             Assert.IsNotNull(cloned);
             Assert.AreNotSame(obj, cloned);
-            Assert.AreEqual(obj, cloned);
         }
 
         [TestMethod]
         public void VerifyIsSerializable()
         {
+            var idFactory = new IdFactory();
             var items = new object[]
             {
-                new IdFactory()
+                idFactory,
+                new Day(idFactory, DateTime.Today),
+                new DayCollection(idFactory),
+                new DayEntry(idFactory.Next(typeof(DayEntry))),
+                new DayEntryCollection(idFactory),
+                new Entities(),
+                new Person(idFactory.Next(typeof(Person))),
+                new PersonCollection(idFactory)
             };
             foreach (var item in items)
             {
