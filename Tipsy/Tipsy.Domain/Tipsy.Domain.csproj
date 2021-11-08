@@ -70,6 +70,7 @@
     <Compile Include="Entity\Person.cs" />
     <Compile Include="Entity\PersonCollection.cs" />
     <Compile Include="IdFactory.cs" />
+    <Compile Include="IO\Persistence.cs" />
     <Compile Include="Logic\Calculator.cs" />
     <Compile Include="Logic\CalculatorCheckPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

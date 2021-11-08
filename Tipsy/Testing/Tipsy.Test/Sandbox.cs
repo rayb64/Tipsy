@@ -21,7 +21,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
     public class Sandbox
     {
         [TestMethod]
-        public void WorkingWithEntities()
+        public void Temporary_WorkingWithEntities()
         {
             var ent = new Entities() as IEntities;
             var joe = ent.People.CreateNew("Joe");
@@ -162,6 +162,13 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
             {
                 Console.WriteLine(item);
             }
+        }
+
+        [TestMethod]
+        public void Temporary_Storage()
+        {
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+            Console.WriteLine(path);
         }
     }
 }

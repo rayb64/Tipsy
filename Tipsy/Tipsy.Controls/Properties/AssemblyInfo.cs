@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Tipsy.Controls")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Birklid Software")]
 [assembly: AssemblyProduct("Tipsy.Controls")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

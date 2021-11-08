@@ -17,16 +17,32 @@ namespace Com.Gmail.Birklid.Ray.Tipsy
     /// </summary>
     public partial class App : Application
     {
+        #region Private Fields
+
+        private IContainerProvider _container;
+
+        #endregion Private Fields
+
         public App()
         {
             ApplicationTraceSource.Instance.Created(this);
         }
 
+        protected override void OnExit(
+            ExitEventArgs e)
+        {
+            _container.Resolve<Controllers.IDataController>().Shutdown();
+            base.OnExit(e);
+        }
+
         protected override void OnStartup(
             StartupEventArgs e)
         {
+            // TODO: Need to protect this as a 'single instance' application.
             base.OnStartup(e);
-            new Bootstrap.Bootstrapper().Run();
+            var bootstrapper = new Bootstrap.Bootstrapper();
+            bootstrapper.Run();
+            _container = bootstrapper.Container;
         }
     }
 }

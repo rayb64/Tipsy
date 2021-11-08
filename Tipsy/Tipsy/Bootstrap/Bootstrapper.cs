@@ -6,6 +6,7 @@
 // <Date>11/6/2021 7:00:43 AM</Date>
 namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
 {
+    using Com.Gmail.Birklid.Ray.Tipsy.Controllers;
     using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using Com.Gmail.Birklid.Ray.Tipsy.Views;
     using Prism.DryIoc;
@@ -41,6 +42,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
         protected override void OnInitialized()
         {
             base.OnInitialized();
+            Container.Resolve<IDataController>().Initialize();
             Container.Resolve<IRegionManager>().RequestNavigate("ContentRegion", Properties.Settings.Default.DefaultView);
         }
 
@@ -49,6 +51,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
         {
             Log.MethodCall(this);
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
+            containerRegistry.RegisterSingleton<IDataController, DataController>();
             containerRegistry.RegisterForNavigation<History>();
             containerRegistry.RegisterForNavigation<Today>();
             containerRegistry.RegisterForNavigation<People>();

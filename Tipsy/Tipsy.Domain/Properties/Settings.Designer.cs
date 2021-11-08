@@ -25,7 +25,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.00:00:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.00:00:00")]
         public global::System.TimeSpan MaximumLogAge {
             get {
                 return ((global::System.TimeSpan)(this["MaximumLogAge"]));

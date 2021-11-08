@@ -62,7 +62,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy
         private void OnExit()
         {
             Log.MethodCall(this);
-            Application.Current.MainWindow.Close();
+            Application.Current?.MainWindow?.Close();
         }
 
         private void OnViewHistory()

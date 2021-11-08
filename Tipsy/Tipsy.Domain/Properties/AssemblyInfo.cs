@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Birklid Software")]
 [assembly: AssemblyProduct("Tipsy.Domain")]
-[assembly: AssemblyCopyright("Copyright © Birklid Software 2020")]
+[assembly: AssemblyCopyright("Copyright © Birklid Software 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

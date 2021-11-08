@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MaximumLogAge" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">10.00:00:00</Value>
+      <Value Profile="(Default)">1.00:00:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

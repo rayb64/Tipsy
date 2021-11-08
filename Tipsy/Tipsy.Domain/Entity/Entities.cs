@@ -46,5 +46,14 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
         public IPersonCollection People => _people;
 
         #endregion IEntities Members
+
+        #region Object Overrides
+
+        public override string ToString()
+        {
+            return $"Days = {_days}; People = {_people}";
+        }
+
+        #endregion Object Overrides
     }
 }

@@ -64,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Converters\ContentConverter.cs" />
     <Compile Include="DataModels\ButtonDataModel.cs" />
     <Compile Include="ViewModels\ContentViewModelBase.cs" />
