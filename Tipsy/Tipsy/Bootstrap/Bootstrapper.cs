@@ -55,6 +55,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Bootstrap
             containerRegistry.RegisterForNavigation<History>();
             containerRegistry.RegisterForNavigation<Today>();
             containerRegistry.RegisterForNavigation<People>();
+            containerRegistry.RegisterDialog<PersonDialog, ViewModels.PersonDialogViewModel>();
         }
 
         #endregion PrismBootstrapper Overrides

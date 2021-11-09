@@ -61,6 +61,15 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string CreatedHeader {
+            get {
+                return ResourceManager.GetString("CreatedHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a new entry for today.
         /// </summary>
         public static string DayEntry_AddToolTip {
@@ -120,6 +129,24 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         public static string HistoryMenu {
             get {
                 return ResourceManager.GetString("HistoryMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string IdHeader {
+            get {
+                return ResourceManager.GetString("IdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string NameHeader {
+            get {
+                return ResourceManager.GetString("NameHeader", resourceCulture);
             }
         }
         

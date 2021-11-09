@@ -170,5 +170,12 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
             var path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
             Console.WriteLine(path);
         }
+
+        [TestMethod]
+        public void Temporary_InvokeCheck()
+        {
+            var x = System.Windows.Application.Current;
+            var y = Synchronizer.Instance.IsInvokeRequired;
+        }
     }
 }

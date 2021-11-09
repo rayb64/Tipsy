@@ -25,7 +25,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Today")]
+        [global::System.Configuration.DefaultSettingValueAttribute("People")]
         public string DefaultView {
             get {
                 return ((string)(this["DefaultView"]));

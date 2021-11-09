@@ -65,11 +65,17 @@
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Bootstrap\Bootstrapper.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controls\TipsyTextBox.cs" />
     <Compile Include="Converters\ContentConverter.cs" />
     <Compile Include="DataModels\ButtonDataModel.cs" />
+    <Compile Include="DataModels\EntityDataModelBase.cs" />
+    <Compile Include="DataModels\PeopleDataModel.cs" />
+    <Compile Include="DataModels\PersonDataModel.cs" />
+    <Compile Include="Synchronizer.cs" />
     <Compile Include="ViewModels\ContentViewModelBase.cs" />
     <Compile Include="ViewModels\HistoryViewModel.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonDialogViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TodayViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -81,6 +87,9 @@
     </Compile>
     <Compile Include="Views\People.xaml.cs">
       <DependentUpon>People.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonDialog.xaml.cs">
+      <DependentUpon>PersonDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -111,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\People.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

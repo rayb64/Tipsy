@@ -15,11 +15,12 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
     using System.Text;
     using System.Threading.Tasks;
     using System.Diagnostics;
+    using Com.Gmail.Birklid.Ray.Tipsy.DataModels;
 
-    internal interface IDataController
+    public interface IDataController
     {
         IDayCollection Days { get; }
-        IPersonCollection People { get; }
+        PeopleDataModel People { get; }
         void Initialize();
         void Shutdown();
     }
@@ -30,6 +31,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
 
         private IEntities _entities;
         private readonly Uri _file;
+        private PeopleDataModel _people;
         private readonly IO.IPersistence _persistence = IO.Persistence.Zip;
 
         #endregion Private Fields
@@ -48,15 +50,16 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
         #region IDataController Members
 
         public IDayCollection Days => _entities.Days;
-        public IPersonCollection People => _entities.People;
+        public PeopleDataModel People => _people;
 
         public void Initialize()
         {
             Log.MethodCall(this);
             _entities = _persistence.LoadOrCreate(_file, () => new Entities());
             Log.Information($"Entities loaded: {_entities}");
+            _people = new PeopleDataModel(_entities.People);
 
-            Temporary.AddSamplePeople(People);
+            // Temporary.AddSamplePeople(People);
         }
         
         public void Shutdown()

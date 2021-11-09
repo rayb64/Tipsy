@@ -17,6 +17,13 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <Style x:Key="_dialogButton" TargetType="Button">
+        <Setter Property="Height" Value="24" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="4,0,0,0" />
+        <Setter Property="Width" Value="60" />
+    </Style>
+
     <SolidColorBrush x:Key="_headerBrush" Color="AliceBlue" />
 
     <Style x:Key="_toolButton" TargetType="Button">
@@ -25,4 +32,15 @@
         <Setter Property="Margin" Value="4,0" />
     </Style>
 
+    <Style x:Key="_validatingTextBox" TargetType="{x:Type TextBox}">
+        <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />-->
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip" Value="{Binding 
+                Path=(Validation.Errors)[0].ErrorContent, 
+                RelativeSource={RelativeSource Self}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
 </ResourceDictionary>
