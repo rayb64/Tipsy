@@ -10,7 +10,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.DataModels
     using Prism.Mvvm;
     using System;
 
-    public class EntityDataModelBase<T> : BindableBase, IEntityBase where T : IEntityBase
+    public class EntityDataModelBase<T> : BindableBase, IEntityBase where T : EntityBase
     {
         #region Creation
 

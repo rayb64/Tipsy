@@ -19,7 +19,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
 
     public interface IDataController
     {
-        IDayCollection Days { get; }
+        //IDayCollection Days { get; }
         PeopleDataModel People { get; }
         void Initialize();
         void Shutdown();
@@ -49,7 +49,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
 
         #region IDataController Members
 
-        public IDayCollection Days => _entities.Days;
+        //public IDayCollection Days => _entities.Days;
         public PeopleDataModel People => _people;
 
         public void Initialize()
@@ -57,7 +57,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
             Log.MethodCall(this);
             _entities = _persistence.LoadOrCreate(_file, () => new Entities());
             Log.Information($"Entities loaded: {_entities}");
-            _people = new PeopleDataModel(_entities.People);
+            _people = new PeopleDataModel(_entities.IdFactory, _entities.People);
 
             // Temporary.AddSamplePeople(People);
         }
@@ -65,6 +65,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
         public void Shutdown()
         {
             Log.MethodCall(this);
+            _entities.People = People.Select(e => e.Entity);
             _persistence.Save(_file, _entities);
             Log.Information($"Entities saved: {_entities}");
         }
@@ -86,20 +87,20 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Controllers
             return new Uri(path);
         }
 
-        private static class Temporary
-        {
-            [Conditional("DEBUG")]
-            public static void AddSamplePeople(
-                IPersonCollection people)
-            {
-                if (people.Count == 0)
-                {
-                    people.CreateNew("Joe");
-                    people.CreateNew("Ray");
-                    people.CreateNew("Eva");
-                }
-            }
-        }
+        //private static class Temporary
+        //{
+        //    [Conditional("DEBUG")]
+        //    public static void AddSamplePeople(
+        //        IPersonCollection people)
+        //    {
+        //        if (people.Count == 0)
+        //        {
+        //            people.CreateNew("Joe");
+        //            people.CreateNew("Ray");
+        //            people.CreateNew("Eva");
+        //        }
+        //    }
+        //}
 
         #endregion Private Members
     }

@@ -65,13 +65,10 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test
             var items = new object[]
             {
                 idFactory,
-                new Day(idFactory, DateTime.Today),
-                new DayCollection(idFactory),
+                new Day(idFactory.Next(typeof(Day)), DateTime.Today),
                 new DayEntry(idFactory.Next(typeof(DayEntry))),
-                new DayEntryCollection(idFactory),
                 new Entities(),
-                new Person(idFactory.Next(typeof(Person))),
-                new PersonCollection(idFactory)
+                new Person(idFactory.Next(typeof(Person)))
             };
             foreach (var item in items)
             {

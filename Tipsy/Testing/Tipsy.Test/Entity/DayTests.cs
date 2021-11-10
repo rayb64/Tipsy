@@ -19,37 +19,46 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test.Entity
         {
             var date = DateTime.Today;
             var idFactory = new IdFactory();
-            var day = new Day(idFactory, date);
+            var day = new Day(idFactory.Next(typeof(Day)), date);
             Assert.AreEqual(1, day.Id);
             Assert.AreNotEqual(default(DateTime), day.Created);
             Assert.AreEqual(date, day.Date);
-            Assert.AreEqual(0, day.Entries.Count);
+            Assert.AreEqual(0, day.Entries.Count());
         }
 
         [TestMethod]
         public void TypicalUsage()
         {
             var idFactory = new IdFactory();
-            var day = new Day(idFactory, DateTime.Today);
+            var day = new Day(idFactory.Next(typeof(Day)), DateTime.Today);
             var joe = new Person(idFactory.Next(typeof(Person))) { Name = "Joe" };
             var cliff = new Person(idFactory.Next(typeof(Person))) { Name = "Cliff" };
-            var entry = day.Entries.CreateNew();
-            entry.Action = DayAction.ClockOn;
-            entry.Bank = 0;
-            entry.BankDescription = "Joe is on";
-            entry.ETips = 5;
-            entry.Person = joe;
-            entry.Time = DateTime.Parse("10:00 AM");
 
-            entry = day.Entries.CreateNew();
-            entry.Action = DayAction.ClockOff;
-            entry.Bank = 10;
-            entry.BankDescription = "Cliff is on";
-            entry.ETips = 15;
-            entry.Person = cliff;
-            entry.Time = DateTime.Parse("2:00 PM");
+            day.Entries = new[]
+            {
+                new DayEntry(idFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOn, Bank = 0, BankDescription = "Joe is on", ETips = 5, Person = joe, Time = DateTime.Parse("10 AM") },
+                new DayEntry(idFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOff, Bank = 10, BankDescription = "Cliff is on", ETips = 15, Person = cliff, Time = DateTime.Parse("2 PM") },
+            };
 
-            entry = day.Entries.First();
+            //var entry = day.Entries.CreateNew();
+            //entry.Action = DayAction.ClockOn;
+            //entry.Bank = 0;
+            //entry.BankDescription = "Joe is on";
+            //entry.ETips = 5;
+            //entry.Person = joe;
+            //entry.Time = DateTime.Parse("10:00 AM");
+
+            //entry = day.Entries.CreateNew();
+            //entry.Action = DayAction.ClockOff;
+            //entry.Bank = 10;
+            //entry.BankDescription = "Cliff is on";
+            //entry.ETips = 15;
+            //entry.Person = cliff;
+            //entry.Time = DateTime.Parse("2:00 PM");
+
+            var entry = day.Entries.First();
             Assert.AreEqual(DayAction.ClockOn, entry.Action);
             Assert.AreEqual(0, entry.Bank);
             Assert.AreEqual("Joe is on", entry.BankDescription);
@@ -65,7 +74,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test.Entity
             Assert.AreEqual("Cliff", entry.Person.Name);
             Assert.AreEqual(DateTime.Parse("2:00 PM"), entry.Time);
 
-            Assert.AreEqual(2, day.Entries.Count);
+            Assert.AreEqual(2, day.Entries.Count());
         }
     }
 }

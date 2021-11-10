@@ -18,74 +18,41 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test.Entity
         public void CheckDefaults()
         {
             var entities = new Entities();
-            Assert.AreEqual(0, entities.Days.Count);
-            Assert.AreEqual(0, entities.People.Count);
+            Assert.AreEqual(0, entities.Days.Count());
+            Assert.AreEqual(0, entities.People.Count());
         }
 
         [TestMethod]
         public void TypicalUsage()
         {
             var ent = new Entities() as IEntities;
-            var joe = ent.People.CreateNew("Joe");
-            Assert.AreEqual(1, joe.Id);
-            Assert.AreEqual("Joe", joe.Name);
-            var ray = ent.People.CreateNew("Ray");
-            Assert.AreEqual(2, ray.Id);
-            Assert.AreEqual("Ray", ray.Name);
-            var eva = ent.People.CreateNew("Eva");
-            Assert.AreEqual(3, eva.Id);
-            Assert.AreEqual("Eva", eva.Name);
-            var e2 = SerializationTests.Clone(ent);
-            var julie = e2.People.CreateNew("Julie");
-            Assert.AreEqual(4, julie.Id);
-            Assert.AreEqual("Julie", julie.Name);
-
-            Assert.IsFalse(ent.People.Contains(julie));
-            Assert.IsTrue(e2.People.Contains(julie));
-            Assert.AreEqual(3, e2.People.Single(e => e.Name == "Eva").Id);
-
-            Assert.AreEqual(0, ent.Days.Count);
-            var today = ent.Days.Today;
-            Assert.AreEqual(1, ent.Days.Count);
-
-            // Simulate entries for a typical day:
-
-            // First, Ray clocks on
-            var entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOn;
-            entry.ETips = 0;
-            entry.Person = ent.People.Single(e => e.Name == "Ray");
-            entry.Time = DateTime.Parse("November 7, 2021 10:00 AM");
-
-            // Next, Joe clocks on
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOn;
-            entry.ETips = 50;
-            entry.Person = ent.People.Single(e => e.Name == "Joe");
-            entry.Time = DateTime.Parse("November 7, 2021 2:00 PM");
-
-            // Then, Ray clocks off
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOff;
-            entry.ETips = 250;
-            entry.Person = ent.People.Single(e => e.Name == "Ray");
-            entry.Time = DateTime.Parse("November 7, 2021 6:00 PM");
-
-            // Finally, Joe clocks off
-            entry = today.Entries.CreateNew();
-            entry.Action = DayAction.ClockOff;
-            entry.ETips = 310;
-            entry.Person = ent.People.Single(e => e.Name == "Joe");
-            entry.Time = DateTime.Parse("November 7, 2021 10:00 PM");
+            var joe = new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Joe" };
+            var eva = new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Eva" };
+            var ray = new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Ray" };
+            var julie = new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Julie" };
+            ent.People = new[] { joe, eva, ray, julie };
+            var day = new Day(ent.IdFactory.Next(typeof(Day)), DateTime.Today);
+            day.Entries = new[]
+            {
+                new DayEntry(ent.IdFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOn, ETips = 0, Person = ray, Time = DateTime.Parse("November 7, 2021 10:00 AM") },
+                new DayEntry(ent.IdFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOn, ETips = 50, Person = joe, Time = DateTime.Parse("November 7, 2021 2 PM") },
+                new DayEntry(ent.IdFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOff, ETips = 250, Person = ray, Time = DateTime.Parse("November 7, 2021 6:00 PM") },
+                new DayEntry(ent.IdFactory.Next(typeof(DayEntry)))
+                { Action = DayAction.ClockOff, ETips = 310, Person = joe, Time = DateTime.Parse("November 7, 2021 10:00 PM") }
+            };
+            ent.Days = new[] { day };
 
             // Check the results on a clone:
-            e2 = SerializationTests.Clone(ent);
-            Assert.AreEqual(3, e2.People.Count);
+            var e2 = SerializationTests.Clone(ent);
+            Assert.AreEqual(4, e2.People.Count());
             Assert.IsNotNull(e2.People.SingleOrDefault(e => e.Name == "Eva"));
             Assert.IsNotNull(e2.People.SingleOrDefault(e => e.Name == "Ray"));
             Assert.IsNotNull(e2.People.SingleOrDefault(e => e.Name == "Joe"));
-            Assert.AreEqual(1, e2.Days.Count);
-            Assert.AreEqual(4, e2.Days.Single().Entries.Count);
+            Assert.AreEqual(1, e2.Days.Count());
+            Assert.AreEqual(4, e2.Days.Single().Entries.Count());
             Assert.IsTrue(e2.Days.Single().Entries.Select(e => e.Time.Date).All(e => e.Year == 2021 && e.Month == 11 && e.Day == 7));
 
             // Verify the entries (1)

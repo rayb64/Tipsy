@@ -15,15 +15,38 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Logic
     using System.Globalization;
     using System.Linq;
 
+    // TODO: BUG: As written, there is a rounding error that can happen in here.
+    //            I have a test in place that catches this error.
+    //            The problem arises when (dollar amount)/(number of people) results in an irrational or repeating decimal number like 1/3
+    //
+    //            The fix I am leaning toward involves removing 'People' and 'Take' to combine the two into a new class.
+    //            Once that is done, the creation of a checkpoint can detect the rounding error and choose victims/winners for losing/gaining
+    //            a penny such that the sum of all 'Take' corrects the rounding error.
+
     /// <summary>
     /// Interface for a calculation check point.
     /// </summary>
     public interface ICalculatorCheckPoint
     {
+        /// <summary>
+        /// Describes how the money is divided
+        /// </summary>
         string Description { get; set; }
+        /// <summary>
+        /// The current total amount of ETips 
+        /// </summary>
         decimal ETips { get; }
+        /// <summary>
+        /// The people among whom the money is to be divided.
+        /// </summary>
         IEnumerable<IPerson> People { get; }
+        /// <summary>
+        /// The share each person receives
+        /// </summary>
         decimal Take { get; set; }
+        /// <summary>
+        /// The time of this checkpoint
+        /// </summary>
         DateTime Time { get; }
     }
 

@@ -13,7 +13,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.DataModels
     using System.Threading.Tasks;
     using System.Windows.Input;
 
-    public class PersonDataModel : EntityDataModelBase<IPerson>, IPerson
+    public class PersonDataModel : EntityDataModelBase<Person>, IPerson
     {
         #region Private Fields
 
@@ -26,12 +26,14 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.DataModels
         #region Creation
 
         public PersonDataModel(
-            IPerson person)
+            Person person)
             : base(person)
         {
         }
 
         #endregion Creation
+
+        #region IPerson Members
 
         public string Name
         {
@@ -45,6 +47,8 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.DataModels
                 }
             }
         }
+
+        #endregion IPerson Members
 
         public ICommand DoubleClickCommand
         {

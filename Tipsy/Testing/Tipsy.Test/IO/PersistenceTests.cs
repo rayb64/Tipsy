@@ -23,8 +23,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test.IO
             var file = new Uri(Path.GetFullPath("entities.bin"));
             DeleteFile(file);
             var ent = p.LoadOrCreate(file, () => new Entities());
-            var person = ent.People.CreateNew();
-            person.Name = "Hot dog";
+            var person = ent.People = new[] { new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Hot dog" } };
             p.Save(file, ent);
             var ent2 = p.LoadOrCreate(file, () => new Entities());
             Assert.AreEqual("Hot dog", ent2.People.Single().Name);
@@ -37,8 +36,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Test.IO
             var file = new Uri(Path.GetFullPath("entities.gz"));
             DeleteFile(file);
             var ent = p.LoadOrCreate(file, () => new Entities());
-            var person = ent.People.CreateNew();
-            person.Name = "Zip dog";
+            var person = ent.People = new[] { new Person(ent.IdFactory.Next(typeof(Person))) { Name = "Zip dog" } };
             p.Save(file, ent);
             var ent2 = p.LoadOrCreate(file, () => new Entities());
             Assert.AreEqual("Zip dog", ent2.People.Single().Name);

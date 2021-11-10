@@ -80,7 +80,10 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.ViewModels
             {
                 if (r.Result == ButtonResult.OK)
                 {
-                    _dataController.People.CreateNew(r.Parameters.GetValue<string>("_name"));
+                    var person = _dataController.People.CreateNew(r.Parameters.GetValue<string>("_name"));
+                    person.EditCommand = _editCommand;
+                    person.DoubleClickCommand = _editCommand;
+                    person.RemoveCommand = _removeCommand;
                 }
             });
         }
