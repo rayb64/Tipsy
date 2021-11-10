@@ -9,13 +9,11 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IDay : IEntityBase
     {
         DateTime Date { get; }
-        IDayEntryCollection Entries { get; }
+        IEnumerable<IDayEntry> Entries { get; set; }
     }
 
     [Serializable]
@@ -23,20 +21,19 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
     {
         #region Private Fields
 
-        private readonly DateTime _date = DateTime.Today;
-        private readonly DayEntryCollection _entries;
+        private readonly DateTime _date;
+        private IDayEntry[] _entries = new IDayEntry[0];
 
         #endregion Private Fields
 
         #region Creation
 
         public Day(
-            IIdFactory idFactory,
+            long id,
             DateTime date)
-            : base(idFactory.Next(typeof(Day)))
+            : base(id)
         {
             _date = date;
-            _entries = new DayEntryCollection(idFactory);
         }
 
         #endregion Creation
@@ -44,8 +41,22 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
         #region IDay Members
 
         public DateTime Date => _date;
-        public IDayEntryCollection Entries => _entries;
+
+        public IEnumerable<IDayEntry> Entries
+        {
+            get => _entries;
+            set => _entries = value == null ? new IDayEntry[0] : value.ToArray();
+        }
 
         #endregion IDay Members
+
+        #region Object Overrides
+
+        public override string ToString()
+        {
+            return Date.ToString("d");
+        }
+
+        #endregion Object Overrides
     }
 }

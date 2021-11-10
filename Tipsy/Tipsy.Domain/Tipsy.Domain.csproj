@@ -62,13 +62,10 @@
     </Compile>
     <Compile Include="Entity\Day.cs" />
     <Compile Include="Entity\DayAction.cs" />
-    <Compile Include="Entity\DayCollection.cs" />
     <Compile Include="Entity\DayEntry.cs" />
-    <Compile Include="Entity\DayEntryCollection.cs" />
     <Compile Include="Entity\Entities.cs" />
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\Person.cs" />
-    <Compile Include="Entity\PersonCollection.cs" />
     <Compile Include="IdFactory.cs" />
     <Compile Include="IO\Persistence.cs" />
     <Compile Include="Logic\Calculator.cs" />

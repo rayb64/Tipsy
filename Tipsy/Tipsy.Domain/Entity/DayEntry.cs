@@ -7,11 +7,6 @@
 namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IDayEntry : IEntityBase
     {
@@ -38,12 +33,16 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 
         #endregion Creation
 
+        #region IDayEntry Members
+
         public DayAction Action { get; set; }
         public decimal Bank { get; set; }
         public string BankDescription { get; set; }
         public decimal ETips { get; set; }
         public IPerson Person { get; set; }
         public DateTime Time { get; set; }
+
+        #endregion IDayEntry Members
 
         #region Object Overrides
 

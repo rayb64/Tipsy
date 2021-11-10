@@ -8,10 +8,6 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 {
     using Com.Gmail.Birklid.Ray.Tipsy.Diagnostics;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IEntityBase
     {
@@ -39,7 +35,7 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 
         public DateTime Created { get; private set; }
         public long Id { get; private set; }
-        
+
         #endregion IEntityBase Members
     }
 }

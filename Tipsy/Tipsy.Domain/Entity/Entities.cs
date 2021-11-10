@@ -9,13 +9,12 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public interface IEntities
     {
-        IDayCollection Days { get; }
-        IPersonCollection People { get; }
+        IIdFactory IdFactory { get; }
+        IEnumerable<Day> Days { get; set; }
+        IEnumerable<Person> People { get; set; }
     }
 
     [Serializable]
@@ -23,9 +22,9 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
     {
         #region Private Fields
 
-        private readonly DayCollection _days;
-        private readonly IdFactory _idFactory = new IdFactory();
-        private readonly PersonCollection _people;
+        private readonly IIdFactory _idFactory = new IdFactory();
+        private Day[] _days = new Day[0];
+        private Person[] _people = new Person[0];
 
         #endregion Private Fields
 
@@ -34,16 +33,25 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
         public Entities()
             : base()
         {
-            _days = new DayCollection(_idFactory);
-            _people = new PersonCollection(_idFactory);
         }
 
         #endregion Creation
 
         #region IEntities Members
 
-        public IDayCollection Days => _days;
-        public IPersonCollection People => _people;
+        public IIdFactory IdFactory => _idFactory;
+
+        public IEnumerable<Day> Days
+        {
+            get => _days;
+            set => _days = value == null ? new Day[0] : value.ToArray();
+        }
+
+        public IEnumerable<Person> People
+        {
+            get => _people;
+            set => _people = value == null ? new Person[0] : value.ToArray();
+        }
 
         #endregion IEntities Members
 
@@ -51,9 +59,10 @@ namespace Com.Gmail.Birklid.Ray.Tipsy.Entity
 
         public override string ToString()
         {
-            return $"Days = {_days}; People = {_people}";
+            return $"Days = {_days.Length}; People = {_people.Length}; IdFactory = {_idFactory}";
         }
 
         #endregion Object Overrides
     }
 }
+
