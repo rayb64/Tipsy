@@ -101,6 +101,9 @@
     <Compile Include="Views\ShellMenu.xaml.cs">
       <DependentUpon>ShellMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TipsyDialog.xaml.cs">
+      <DependentUpon>TipsyDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Today.xaml.cs">
       <DependentUpon>Today.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TipsyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
